@@ -1,10 +1,10 @@
 const routes = require('express').Router();
-var Stream = require('node-rtsp-stream')
+var VideoStream = require('node-rtsp-stream')
 
 const rtspURL = 'rtsp://192.168.1.120:8554/picam';
 
-function createStream() {
-  stream = new Stream({
+function createVideoStream() {
+  videoStream = new VideoStream({
     name: 'name',
     streamUrl: rtspURL,
     wsPort: 3081,
@@ -19,5 +19,5 @@ routes.get('/', function (req, res){
   res.send({"rtspURL": rtspURL});
 })
 
-createStream();
+createVideoStream();
 module.exports = routes;

@@ -2,9 +2,19 @@ import Head from 'next/head';
 import react, { Component } from 'react';
 import Title from '../components/Title/Title';
 import Navbar from '../components/Navbar/Navbar';
-import Bargraph from '../components/Bargraph/Bargraph';
+import JsmpegPlayer from '../components/JsmpegPlayer/JsmpegPlayer';
+
+const videoOptions = {
+  poster: 'https://cycjimmy.github.io/staticFiles/images/screenshot/big_buck_bunny_640x360.jpg',
+  audio: false,
+  autoplay: true,
+  autoSetWrapperSize: true
+};
+
+const videoOverlayOptions = {audio: false};
 
 class DroneSensors extends Component {
+  
   constructor() {
     super();
     this.state = {
@@ -14,7 +24,7 @@ class DroneSensors extends Component {
   }
 
   async componentDidMount() {
-    var response = await fetch('/api/users');
+    var response = await fetch('/api/');
     console.log(response);
     this.setState({
       error: null,
@@ -23,32 +33,63 @@ class DroneSensors extends Component {
   }
 
   render() {
+    let jsmpegPlayer = null;
+
     if (!this.state.isLoaded) {
       return (
+        <div>
           <div>
-              <div>
-                  <Title />
-                  <Navbar />
-              </div>
-              <div>Loading Data for Weather Charts</div>
+            <Title />
+            <Navbar />
           </div>
+          <div>Loading Data from Drone</div>
+        </div>
       );
-  }
-
+    }
+    return (
+      <div>
+        <div>
+            <Title />
+            <Navbar />
+          </div>
+        <div className="drone-video-wrapper">
+          <JsmpegPlayer
+            wrapperClassName="drone-video-wrapper"
+            videoUrl="ws://localhost:3081"
+            options={videoOptions}
+            overlayOptions={videoOverlayOptions}
+            onRef={ref => jsmpegPlayer = ref}
+          />
+          <div className="buttons-wrapper">
+            <button onClick={() => jsmpegPlayer.play()}>Play</button>
+            <button onClick={() => jsmpegPlayer.pause()}>Pause</button>
+            <button onClick={() => jsmpegPlayer.stop()}>Stop</button>
+          </div>
+        </div>
+      </div>
+    )
+  
+/*
     return (
       <div>
         <div>
           <Title />
-          <Navbar />
+          #<Navbar />
         </div>
         <div className="drone-sensors-header">
 
         </div>
         <div className="drone-sensors-video">
-          <video id="test_video" controls autoPlay src="rtsp://192.168.1.120:8554/picam"></video>
+        <JsmpegPlayer
+            wrapperClassName="video-wrapper"
+            videoUrl="ws://localhost:3081"
+            options={videoOptions}
+            overlayOptions={videoOverlayOptions}
+          />
         </div>
       </div>
     );
+    */
   }
 }
 
