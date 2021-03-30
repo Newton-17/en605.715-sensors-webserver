@@ -1,7 +1,5 @@
-  
 import React, {Component} from 'react';
 import JSMpeg from '@cycjimmy/jsmpeg-player';
-import styles from './JsmpegPlayer';
 
 export default class JsmpegPlayer extends Component {
     constructor(props) {
@@ -15,7 +13,7 @@ export default class JsmpegPlayer extends Component {
     render() {
       return (
         <div
-          className={this.props.wrapperClassName}
+          className={this.els.videoWrapper}
           ref={videoWrapper => this.els.videoWrapper = videoWrapper}>
         </div>
       );

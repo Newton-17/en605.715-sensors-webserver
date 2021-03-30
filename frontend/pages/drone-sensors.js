@@ -11,10 +11,10 @@ const videoOptions = {
   autoSetWrapperSize: true
 };
 
-const videoOverlayOptions = {audio: false};
+const videoOverlayOptions = { audio: false };
 
 class DroneSensors extends Component {
-  
+
   constructor() {
     super();
     this.state = {
@@ -49,9 +49,12 @@ class DroneSensors extends Component {
     return (
       <div>
         <div>
-            <Title />
-            <Navbar />
-          </div>
+          <Title />
+          <Navbar />
+        </div>
+        <div className="drone-video-header">
+          <h3>Drone Video Stream</h3>
+        </div>
         <div className="drone-video-wrapper">
           <JsmpegPlayer
             wrapperClassName="drone-video-wrapper"
@@ -60,36 +63,38 @@ class DroneSensors extends Component {
             overlayOptions={videoOverlayOptions}
             onRef={ref => jsmpegPlayer = ref}
           />
-          <div className="buttons-wrapper">
+
+          <div className="drone-buttons-wrapper">
             <button onClick={() => jsmpegPlayer.play()}>Play</button>
             <button onClick={() => jsmpegPlayer.pause()}>Pause</button>
             <button onClick={() => jsmpegPlayer.stop()}>Stop</button>
           </div>
         </div>
       </div>
-    )
-  
-/*
-    return (
-      <div>
-        <div>
-          <Title />
-          #<Navbar />
-        </div>
-        <div className="drone-sensors-header">
 
-        </div>
-        <div className="drone-sensors-video">
-        <JsmpegPlayer
-            wrapperClassName="video-wrapper"
-            videoUrl="ws://localhost:3081"
-            options={videoOptions}
-            overlayOptions={videoOverlayOptions}
-          />
-        </div>
-      </div>
-    );
-    */
+    )
+
+    /*
+        return (
+          <div>
+            <div>
+              <Title />
+              #<Navbar />
+            </div>
+            <div className="drone-sensors-header">
+    
+            </div>
+            <div className="drone-sensors-video">
+            <JsmpegPlayer
+                wrapperClassName="video-wrapper"
+                videoUrl="ws://localhost:3081"
+                options={videoOptions}
+                overlayOptions={videoOverlayOptions}
+              />
+            </div>
+          </div>
+        );
+        */
   }
 }
 

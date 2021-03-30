@@ -1,19 +1,17 @@
+.drone-video-header h3 {
+    color:#333333;
+    text-align: center;
+}
+
 .drone-video-wrapper {
     background-color: lightgray;
-    min-height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
     color: white;
   }
 
-.drone-video-wrapper JsmpegPlayer {
-    display: flex;
-    min-width: 400px;
-    min-height: 200px;
-}
 
 .drone-video-wrapper .buttons-wrapper {
     background-color: darkgray;
