@@ -25,11 +25,19 @@ class DroneSensors extends Component {
   }
 
   async componentDidMount() {
-    var response = await fetch('/api/');
-    console.log(response);
+    var response = await fetch('/api/gps/points');
+    var respJson = await response.json()
+    var points =[];
+    for (var point of respJson.gpsPoints){
+      points.push({
+        latitude: point.lat,
+        longitude: point.lon
+      })
+    }
     this.setState({
       error: null,
       isLoaded: true,
+      points: points
     });
   }
 
@@ -76,7 +84,7 @@ class DroneSensors extends Component {
             <h2>Drone GPS Map</h2>
           </div>
           <div className="drone-gps-body">
-            <Mapper></Mapper>
+            <Mapper points={this.state.points}></Mapper>
           </div>
         </div>
       </div>
