@@ -3,6 +3,7 @@ import react, { Component } from 'react';
 import Title from '../components/Title/Title';
 import Navbar from '../components/Navbar/Navbar';
 import JsmpegPlayer from '../components/JsmpegPlayer/JsmpegPlayer';
+import Mapper from '../components/Mapper/Mapper';
 
 const videoOptions = {
   poster: 'https://cycjimmy.github.io/staticFiles/images/screenshot/big_buck_bunny_640x360.jpg',
@@ -53,7 +54,7 @@ class DroneSensors extends Component {
           <Navbar />
         </div>
         <div className="drone-video-header">
-          <h3>Drone Video Stream</h3>
+          <h2>Drone Video Stream</h2>
         </div>
         <div className="drone-video-wrapper">
           <JsmpegPlayer
@@ -68,6 +69,14 @@ class DroneSensors extends Component {
             <button onClick={() => jsmpegPlayer.play()}>Play</button>
             <button onClick={() => jsmpegPlayer.pause()}>Pause</button>
             <button onClick={() => jsmpegPlayer.stop()}>Stop</button>
+          </div>
+        </div>
+        <div className="drone-gps-container">
+          <div className="drone-gps-header">
+            <h2>Drone GPS Map</h2>
+          </div>
+          <div className="drone-gps-body">
+            <Mapper></Mapper>
           </div>
         </div>
       </div>
