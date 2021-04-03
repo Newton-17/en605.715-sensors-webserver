@@ -1,13 +1,14 @@
 const gpsd = require('node-gpsd');
 const routes = require('express').Router();
+const config = require('../../config/config-dev');
 
 gps_points = [];
 
 function startListener() {
     console.log("Attempting to Connect to GPSD")
     var listener = new gpsd.Listener({
-        port: 2947,
-        hostname: '192.168.1.120',
+        port: config.remoteHost.gpsPort,
+        hostname: config.remoteHost.ip,
         logger:  {
             info: function() {},
             warn: console.warn,

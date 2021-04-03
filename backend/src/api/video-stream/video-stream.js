@@ -1,7 +1,8 @@
 const routes = require('express').Router();
-var VideoStream = require('node-rtsp-stream')
+const VideoStream = require('node-rtsp-stream')
+const config = require('../../config/config-dev')
 
-const rtspURL = 'rtsp://192.168.1.120:8554/picam';
+const rtspURL = 'rtsp://' + config.remoteHost.ip + ':' + config.remoteHost.rtspURLPort + config.remoteHost.rtspURLExtension;
 
 function createVideoStream() {
   videoStream = new VideoStream({
