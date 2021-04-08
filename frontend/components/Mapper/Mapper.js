@@ -24,18 +24,14 @@ export default class Mapper extends Component {
   }
   componentDidMount() {
     // Get GPS
-
-    navigator.geolocation.getCurrentPosition(position => {
-      console.log(position);
-      this.setState({
-        error: null,
-        isLoaded: true,
-        mapsCenter: {
-          latitude: 27.896576,
-          longitude: -82.504670
-        },
-        points: this.props.points
-      })
+    this.setState({
+      error: null,
+      isLoaded: true,
+      mapsCenter: {
+        latitude: 27.896576,
+        longitude: -82.504670
+      },
+      points: this.props.points
     })
   }
   render() {
