@@ -31,8 +31,8 @@ export default class Mapper extends Component {
         error: null,
         isLoaded: true,
         mapsCenter: {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
+          latitude: 27.896576,
+          longitude: -82.504670
         },
         points: this.props.points
       })
